@@ -14,13 +14,6 @@ npm install
 npm run dev
 ```
 
-## 提交代码
-
-```
-git add .
-npm run commit
-```
-
 ## 打包
 
 ```
