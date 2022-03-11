@@ -6,3 +6,15 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+// 在 template 中使用 $store
+declare let $store: any
+
+interface ImportMetaEnv {
+  readonly VITE_BASE_URL: string
+  // 更多环境变量...
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv
+}
