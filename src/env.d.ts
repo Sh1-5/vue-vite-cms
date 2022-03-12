@@ -7,7 +7,7 @@ declare module '*.vue' {
   export default component
 }
 
-// 在 template 中使用 $store
+// 在template中使用$store
 declare let $store: any
 
 interface ImportMetaEnv {
