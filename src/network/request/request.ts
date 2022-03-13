@@ -11,12 +11,12 @@ class Service {
     // 给单个实例添加拦截器
     this.interceptors = config.interceptors
     this.instance.interceptors.request.use(
-      this.interceptors?.requestInterceptors,
-      this.interceptors?.requestInterceptorsCatch
+      this.interceptors?.requestInterceptor,
+      this.interceptors?.requestInterceptorCatch
     )
     this.instance.interceptors.response.use(
-      this.interceptors?.responseInterceptors,
-      this.interceptors?.responseInterceptorsCatch
+      this.interceptors?.responseInterceptor,
+      this.interceptors?.responseInterceptorCatch
     )
     // 给所有实例添加拦截器
     this.instance.interceptors.request.use(
@@ -54,14 +54,14 @@ class Service {
   // 给request请求添加拦截器
   request<T>(config: ServiceConfig<T>): Promise<T> {
     return new Promise((resolve, reject) => {
-      if (config.interceptors?.requestInterceptors) {
-        config = config.interceptors.requestInterceptors(config)
+      if (config.interceptors?.requestInterceptor) {
+        config = config.interceptors.requestInterceptor(config)
       }
       this.instance
         .request<any, T>(config)
         .then((res) => {
-          if (config.interceptors?.responseInterceptors) {
-            res = config.interceptors.responseInterceptors(res)
+          if (config.interceptors?.responseInterceptor) {
+            res = config.interceptors.responseInterceptor(res)
           }
           resolve(res)
         })

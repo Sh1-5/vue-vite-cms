@@ -5,16 +5,16 @@ const service = new Service({
   timeout: 5000,
   // 给此实例添加拦截器
   interceptors: {
-    requestInterceptors: (config) => {
+    requestInterceptor: (config) => {
       return config
     },
-    requestInterceptorsCatch: (err) => {
+    requestInterceptorCatch: (err) => {
       return Promise.reject(err)
     },
-    responseInterceptors: (res) => {
+    responseInterceptor: (res) => {
       return res
     },
-    responseInterceptorsCatch: (err) => {
+    responseInterceptorCatch: (err) => {
       return Promise.reject(err)
     }
   }
