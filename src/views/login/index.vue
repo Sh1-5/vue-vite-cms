@@ -1,7 +1,21 @@
+<script setup lang="ts">
+import LoginPanel from './cpns/LoginPanel.vue'
+</script>
+
 <template>
-  <el-button type="primary">按钮</el-button>
+  <div class="login">
+    <LoginPanel />
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<style scoped lang="scss">
+.login {
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/img/login-bg.svg');
 
-<style scoped lang="scss"></style>
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>

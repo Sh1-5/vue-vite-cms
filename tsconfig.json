@@ -1,16 +1,24 @@
 {
   "compilerOptions": {
+    // 目标代码
     "target": "esnext",
     "useDefineForClassFields": true,
+    // 模块化方案
     "module": "esnext",
+    // 安装node的方式去解析模块
     "moduleResolution": "node",
+    // 严格检查
     "strict": true,
+    // jsx处理
     "jsx": "preserve",
+    // 生成映射文件
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    // 使用库的类型
     "lib": ["esnext", "dom"]
   },
+  // 解析文件
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
