@@ -6,10 +6,10 @@ import LoginPhone from './LoginPhone.vue'
 
 const activeName = ref('account')
 const isKeepPassword = ref(false)
-const accountRef = ref<InstanceType<typeof LoginAccount>>()
+const accountRef = ref(null)
 const handleLogin = () => {
   if (activeName.value === 'account') {
-    accountRef.value?.login(isKeepPassword.value)
+    ;(accountRef.value as any)?.login(isKeepPassword.value)
   } else {
     console.log('手机登录')
   }

@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
-import { ElForm } from 'element-plus'
-import rules from '../config/accout-config'
+import rules from '../config/account-config'
 
-const formRef = ref<InstanceType<typeof ElForm>>()
+const formRef = ref(null)
 const account = reactive({
   name: '',
   password: ''
 })
 const login = (isKeepPassword: boolean) => {
-  formRef.value?.validate((valid) => {
+  ;(formRef.value as any)?.validate((valid: boolean) => {
     if (valid) {
       // 登录逻辑
     }
