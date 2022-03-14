@@ -3,9 +3,10 @@ import { ref } from 'vue'
 import { User, Phone } from '@element-plus/icons-vue'
 import LoginAccount from './LoginAccount.vue'
 import LoginPhone from './LoginPhone.vue'
+import localCache from '../../../utils/cache'
 
 const activeName = ref('account')
-const isKeepPassword = ref(false)
+const isKeepPassword = ref(Boolean(localCache.getCache('name')))
 const accountRef = ref(null)
 const handleLogin = () => {
   if (activeName.value === 'account') {

@@ -27,8 +27,6 @@
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^7.0.0",
-    "install": "^0.13.0",
-    "npm": "^8.5.4",
     "prettier": "^2.5.1",
     "sass": "^1.49.9",
     "typescript": "^4.5.4",
