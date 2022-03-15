@@ -59,7 +59,7 @@ axios.interceptors.response.use(
 )
 
 // Promise本身可以有类型
-new Promise<string>((resolve, reject) => {
+new Promise<string>((resolve) => {
   // resolve(1024)
   resolve('hello')
 }).then((res) => {
