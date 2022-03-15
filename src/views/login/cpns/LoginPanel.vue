@@ -10,6 +10,7 @@ const isKeepPassword = ref(Boolean(localCache.getCache('name')))
 const accountRef = ref(null)
 const handleLogin = () => {
   if (activeName.value === 'account') {
+    // eslint-disable-next-line @typescript-eslint/no-extra-semi
     ;(accountRef.value as any)?.login(isKeepPassword.value)
   } else {
     console.log('手机登录')

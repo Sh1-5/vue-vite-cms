@@ -11,6 +11,7 @@ const account = reactive({
   password: localCache.getCache('password') ?? ''
 })
 const login = (isKeepPassword: boolean) => {
+  // eslint-disable-next-line @typescript-eslint/no-extra-semi
   ;(formRef.value as any)?.validate((valid: boolean) => {
     if (valid) {
       // 1.判断是否需要记住密码
@@ -26,6 +27,7 @@ const login = (isKeepPassword: boolean) => {
     }
   })
 }
+// eslint-disable-next-line no-undef
 defineExpose({
   login
 })
