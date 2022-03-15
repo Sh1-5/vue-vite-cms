@@ -1,7 +1,7 @@
 import axios from 'axios'
 import type { AxiosInstance } from 'axios'
 import { ServiceInterceptors, ServiceConfig } from './types'
-import localCache from '../../utils/cache'
+import localCache from 'utils/cache'
 
 class Service {
   instance: AxiosInstance

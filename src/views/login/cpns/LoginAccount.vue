@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 import rules from '../config/account-config'
-import localCache from '../../../utils/cache'
+import localCache from 'utils/cache'
 import { useStore } from 'vuex'
 
 const store = useStore()

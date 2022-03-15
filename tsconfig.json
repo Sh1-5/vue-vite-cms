@@ -16,7 +16,17 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     // 使用库的类型
-    "lib": ["esnext", "dom"]
+    "lib": ["esnext", "dom"],
+    "baseUrl": "./",
+    "paths": {
+      "api/*": ["src/api/*"],
+      "assets/*": ["src/assets/*"],
+      "network/*": ["src/network/*"],
+      "router/*": ["src/router/*"],
+      "store/*": ["src/store/*"],
+      "utils/*": ["src/utils/*"],
+      "views/*": ["src/views/*"]
+    }
   },
   // 解析文件
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],

@@ -1,14 +1,10 @@
 import { Module } from 'vuex'
 import { LoginState } from './types'
 import { RootState } from '../types'
-import { Account } from '../../api/login/types'
-import {
-  login,
-  getUserInfoById,
-  getUserMenuListByRoleId
-} from '../../api/login'
-import localCache from '../../utils/cache'
-import router from '../../router'
+import { Account } from 'api/login/types'
+import { login, getUserInfoById, getUserMenuListByRoleId } from 'api/login'
+import localCache from 'utils/cache'
+import router from 'router/index'
 
 const loginModule: Module<LoginState, RootState> = {
   namespaced: true,

@@ -20,6 +20,12 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
+      api: resolve(__dirname, 'src/api'),
+      asserts: resolve(__dirname, 'src/asserts'),
+      network: resolve(__dirname, 'src/network'),
+      router: resolve(__dirname, 'src/router'),
+      store: resolve(__dirname, 'src/store'),
+      utils: resolve(__dirname, 'src/utils'),
       views: resolve(__dirname, 'src/views')
     }
   },
