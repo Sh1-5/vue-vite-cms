@@ -21,6 +21,8 @@ module.exports = {
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
-    '@typescript-eslint/no-explicit-any': ['off']
-  }
+    '@typescript-eslint/no-explicit-any': ['off'],
+    'vue/multi-word-component-names': ['off']
+  },
+  ignorePatterns: ['src/layout/nav-menu/index.vue']
 }

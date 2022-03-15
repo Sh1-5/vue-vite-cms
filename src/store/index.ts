@@ -1,5 +1,5 @@
-import { createStore } from 'vuex'
-import { RootState } from './types'
+import { createStore, Store, useStore as useVuexStore } from 'vuex'
+import { RootState, StoreType } from './types'
 import login from './login'
 
 const store = createStore<RootState>({
@@ -19,6 +19,10 @@ const store = createStore<RootState>({
 
 export const setStore = () => {
   store.dispatch('login/loadLocalLogin')
+}
+
+export function useStore(): Store<StoreType> {
+  return useVuexStore()
 }
 
 export default store

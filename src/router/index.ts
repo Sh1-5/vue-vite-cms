@@ -1,8 +1,8 @@
 import { createRouter, RouteRecordRaw, createWebHashHistory } from 'vue-router'
-import localCache from 'utils/cache'
+import localCache from '@/utils/cache'
 
-const Login = () => import('views/login/index.vue')
-const Main = () => import('views/main/index.vue')
+const Login = () => import('@/views/login/index.vue')
+const Main = () => import('@/views/main/index.vue')
 
 const routes: RouteRecordRaw[] = [
   {

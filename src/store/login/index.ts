@@ -1,10 +1,10 @@
 import { Module } from 'vuex'
 import { LoginState } from './types'
 import { RootState } from '../types'
-import { Account } from 'api/login/types'
-import { login, getUserInfoById, getUserMenuListByRoleId } from 'api/login'
-import localCache from 'utils/cache'
-import router from 'router/index'
+import { Account } from '@/api/login/types'
+import { login, getUserInfoById, getUserMenuListByRoleId } from '@/api/login'
+import localCache from '@/utils/cache'
+import router from '@/router/index'
 
 const loginModule: Module<LoginState, RootState> = {
   namespaced: true,
@@ -17,18 +17,18 @@ const loginModule: Module<LoginState, RootState> = {
   },
   getters: {},
   mutations: {
-    changeToken(state, token: string) {
+    changeToken: (state, token: string) => {
       state.token = token
     },
-    changeUserInfo(state, userInfo: any) {
+    changeUserInfo: (state, userInfo: any) => {
       state.userInfo = userInfo
     },
-    changeUserMenus(state, userMenus: any) {
+    changeUserMenus: (state, userMenus: any) => {
       state.userMenus = userMenus
     }
   },
   actions: {
-    async accountLoginAction({ commit }, payload: Account) {
+    accountLoginAction: async ({ commit }, payload: Account) => {
       // 1.登录
       const loginResult = await login(payload)
       const { id, token } = loginResult.data
@@ -50,7 +50,7 @@ const loginModule: Module<LoginState, RootState> = {
       // 4.跳到首页
       router.push('/main')
     },
-    loadLocalLogin({ commit }) {
+    loadLocalLogin: ({ commit }) => {
       const token = localCache.getCache('token')
       if (token) {
         commit('changeToken', token)
