@@ -4,7 +4,8 @@ import { RootState } from '../types'
 import { Account } from '@/api/login/types'
 import { login, getUserInfoById, getUserMenuListByRoleId } from '@/api/login'
 import localCache from '@/utils/cache'
-import router from '@/router/index'
+import router from '@/router'
+import { mapMenusToRoutes } from '@/utils/map-menus'
 
 const loginModule: Module<LoginState, RootState> = {
   namespaced: true,
@@ -25,6 +26,12 @@ const loginModule: Module<LoginState, RootState> = {
     },
     changeUserMenus: (state, userMenus: any) => {
       state.userMenus = userMenus
+
+      // 动态注册路由
+      const routes = mapMenusToRoutes(userMenus)
+      routes.forEach((route) => {
+        router.addRoute('main', route)
+      })
     }
   },
   actions: {

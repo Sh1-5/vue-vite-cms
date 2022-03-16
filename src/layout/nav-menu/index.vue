@@ -1,15 +1,32 @@
 <script setup lang="ts">
 import { useStore } from '@/store'
-import { computed, defineProps } from 'vue'
+import { computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { pathMapMenu } from '@/utils/map-bread-crumb'
 
+// 显示菜单
 const store = useStore()
 const userMenus = computed(() => store.state.login.userMenus)
-const props = defineProps({
+
+// 折叠/展开菜单
+defineProps({
   isCollapse: {
     type: Boolean,
     default: false
   }
 })
+
+// 路由跳转
+const router = useRouter()
+const handleMenuItemClick = (item: any) => {
+  router.push(item.url)
+}
+
+// 刷新
+const route = useRoute()
+const activeIndex = computed(() =>
+  String(pathMapMenu(userMenus.value, route.path).id)
+)
 </script>
 
 <template>
@@ -22,7 +39,7 @@ const props = defineProps({
       :collapse-transition="false"
       background-color="#001529"
       text-color="#b7bdc3"
-      default-active="2"
+      :default-active="activeIndex"
       :collapse="isCollapse"
     >
       <template v-for="item in userMenus">
@@ -37,7 +54,10 @@ const props = defineProps({
               <span class="name">{{ item.name }}</span>
             </template>
             <template v-for="subitem in item.children">
-              <el-menu-item :index="subitem.id + ''">
+              <el-menu-item
+                :index="subitem.id + ''"
+                @click="handleMenuItemClick(subitem)"
+              >
                 <template #title>
                   <el-icon v-if="subitem.icon">
                     <component :is="subitem.icon.slice(7)"></component>
@@ -101,11 +121,11 @@ const props = defineProps({
     }
 
     .name {
-      margin-left: 30px;
+      margin-left: 27px;
     }
 
     .subitem-name {
-      margin-left: 38px;
+      margin-left: 36px;
     }
   }
 }

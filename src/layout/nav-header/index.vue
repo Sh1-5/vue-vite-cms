@@ -1,18 +1,27 @@
 <script setup lang="ts">
-import { ref, defineEmits } from 'vue'
-import localStorage from '@/utils/cache'
-import router from '@/router'
+import { ref, defineEmits, computed } from 'vue'
+import localCache from '@/utils/cache'
+import { useRouter, useRoute } from 'vue-router'
+import { useStore } from 'vuex'
+import { StoreType } from '@/store/types'
+import { pathMapBreadCrumb } from '@/utils/map-bread-crumb'
 
+// 折叠/展开菜单
 const isFold = ref(false)
 const handleArrowChange = () => {
   isFold.value = !isFold.value
   emits('foldChange', isFold.value)
 }
 const emits = defineEmits(['foldChange'])
+
+// 退出登录
+const router = useRouter()
 const logout = () => {
-  localStorage.clearCache()
+  localCache.clearCache()
   router.push('/login')
 }
+
+// 全屏/退出全屏
 const isFull = ref(false)
 const full = () => {
   if (isFull.value) {
@@ -22,6 +31,14 @@ const full = () => {
   }
   isFull.value = !isFull.value
 }
+
+// 面包屑和用户名称
+const route = useRoute()
+const store = useStore<StoreType>()
+const name = computed(() => store.state.login.userInfo.name)
+const breadCrumb = computed(() =>
+  pathMapBreadCrumb(store.state.login.userMenus, route.path)
+)
 </script>
 
 <template>
@@ -31,8 +48,9 @@ const full = () => {
         <component :is="isFold ? 'expand' : 'fold'"></component>
       </el-icon>
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item>promotion list</el-breadcrumb-item>
-        <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
+        <el-breadcrumb-item v-for="(item, index) in breadCrumb" :key="index">{{
+          item
+        }}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="right-operate">
@@ -45,7 +63,7 @@ const full = () => {
       />
       <el-dropdown>
         <span class="el-dropdown-link">
-          Dropdown List
+          欢迎您，{{ name }}
           <el-icon class="el-icon--right">
             <arrow-down />
           </el-icon>

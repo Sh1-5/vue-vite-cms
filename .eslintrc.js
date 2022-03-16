@@ -24,5 +24,6 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': ['off'],
     'vue/multi-word-component-names': ['off']
   },
+  // v-for不添加key
   ignorePatterns: ['src/layout/nav-menu/index.vue']
 }
