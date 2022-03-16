@@ -43,10 +43,12 @@ const handleFoldChange = (isFold: boolean) => {
 
       .page-header {
         height: 48px;
+        background-color: #fff;
       }
 
       .page-content {
         height: calc(100% - 48px);
+        background-color: #f0f2f5;
       }
     }
   }

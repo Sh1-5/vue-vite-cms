@@ -7,8 +7,8 @@ import { useStore } from 'vuex'
 const store = useStore()
 const formRef = ref(null)
 const account = reactive({
-  name: localCache.getCache('name') ?? '',
-  password: localCache.getCache('password') ?? ''
+  name: localCache.getCache('name') ?? 'coderwhy',
+  password: localCache.getCache('password') ?? '123456'
 })
 const login = (isKeepPassword: boolean) => {
   // eslint-disable-next-line @typescript-eslint/no-extra-semi

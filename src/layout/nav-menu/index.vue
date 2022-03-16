@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useStore } from '@/store'
 import { computed, defineProps } from 'vue'
+
 const store = useStore()
 const userMenus = computed(() => store.state.login.userMenus)
 const props = defineProps({
@@ -41,7 +42,7 @@ const props = defineProps({
                   <el-icon v-if="subitem.icon">
                     <component :is="subitem.icon.slice(7)"></component>
                   </el-icon>
-                  <span class="name">{{ subitem.name }}</span>
+                  <span class="subitem-name">{{ subitem.name }}</span>
                 </template>
               </el-menu-item>
             </template>
@@ -100,7 +101,11 @@ const props = defineProps({
     }
 
     .name {
-      margin-left: 32px;
+      margin-left: 30px;
+    }
+
+    .subitem-name {
+      margin-left: 38px;
     }
   }
 }
