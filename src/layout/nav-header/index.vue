@@ -54,6 +54,13 @@ const breadCrumb = computed(() =>
       </el-breadcrumb>
     </div>
     <div class="right-operate">
+      <a
+        href="https://github.com/Sh1-5/vue-vite-cms"
+        target="__blank"
+        class="github-a"
+      >
+        <img class="github-i" src="@/assets/img/github.svg" alt="" />
+      </a>
       <el-icon class="full" @click="full">
         <full-screen />
       </el-icon>
@@ -108,13 +115,24 @@ const breadCrumb = computed(() =>
     justify-content: space-around;
     align-items: center;
 
+    .github-a {
+      display: flex;
+      align-items: center;
+
+      .github-i {
+        width: 20px;
+        margin-right: 20px;
+        cursor: pointer;
+      }
+    }
+
     .full {
       font-size: 20px;
       cursor: pointer;
     }
 
     .el-avatar {
-      margin: 0 10px 0 18px;
+      margin: 0 10px 0 20px;
     }
 
     .el-dropdown {
