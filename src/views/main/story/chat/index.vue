@@ -1,7 +1,16 @@
-<script setup lang="ts"></script>
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'chat',
+  setup() {
+    return {}
+  }
+})
+</script>
 
 <template>
-  <div class="chat">chat</div>
+  <div class="chat"></div>
 </template>
 
 <style scoped lang="scss"></style>

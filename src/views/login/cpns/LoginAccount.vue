@@ -3,8 +3,9 @@ import { ref, reactive } from 'vue'
 import rules from '../config/account-config'
 import localCache from '@/utils/cache'
 import { useStore } from 'vuex'
+import { StoreType } from '@/store/types'
 
-const store = useStore()
+const store = useStore<StoreType>()
 const formRef = ref(null)
 const account = reactive({
   name: localCache.getCache('name') ?? 'coderwhy',

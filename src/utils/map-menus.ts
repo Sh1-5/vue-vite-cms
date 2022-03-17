@@ -10,7 +10,7 @@ import menu from '@/router/main/system/menu'
 import role from '@/router/main/system/role'
 import user from '@/router/main/system/user'
 
-let firstMenu: any = null
+let firstPage: any = null
 
 export const mapMenusToRoutes = (userMenus: any[]): RouteRecordRaw[] => {
   const routes: RouteRecordRaw[] = []
@@ -35,8 +35,8 @@ export const mapMenusToRoutes = (userMenus: any[]): RouteRecordRaw[] => {
         if (route) {
           routes.push(route)
           // 记录下第一个可以显示的页面
-          if (!firstMenu) {
-            firstMenu = route
+          if (!firstPage) {
+            firstPage = route
           }
         }
       } else {
@@ -48,4 +48,4 @@ export const mapMenusToRoutes = (userMenus: any[]): RouteRecordRaw[] => {
   return routes
 }
 
-export { firstMenu }
+export { firstPage }

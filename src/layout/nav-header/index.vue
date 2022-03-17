@@ -32,7 +32,7 @@ const full = () => {
   isFull.value = !isFull.value
 }
 
-// 面包屑和用户名称
+// 获取面包屑和用户名称
 const route = useRoute()
 const store = useStore<StoreType>()
 const name = computed(() => store.state.login.userInfo.name)

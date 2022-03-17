@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { useStore } from '@/store'
-import { computed } from 'vue'
+import { useStore } from 'vuex'
+import { StoreType } from '@/store/types'
+import { computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { pathMapMenu } from '@/utils/map-bread-crumb'
 
 // 显示菜单
-const store = useStore()
+const store = useStore<StoreType>()
 const userMenus = computed(() => store.state.login.userMenus)
 
 // 折叠/展开菜单
@@ -18,15 +19,22 @@ defineProps({
 
 // 路由跳转
 const router = useRouter()
+
+const emits = defineEmits(['itemClick'])
 const handleMenuItemClick = (item: any) => {
   router.push(item.url)
+  store.commit('addToAliveMenus', pathMapMenu(userMenus.value, item.url))
+  emits('itemClick', item.url)
 }
 
-// 刷新
+// 登录或刷新
 const route = useRoute()
 const activeIndex = computed(() =>
   String(pathMapMenu(userMenus.value, route.path).id)
 )
+onMounted(() => {
+  store.commit('addToAliveMenus', pathMapMenu(userMenus.value, route.path))
+})
 </script>
 
 <template>
@@ -69,7 +77,10 @@ const activeIndex = computed(() =>
           </el-sub-menu>
         </template>
         <template v-else-if="item.type === 2">
-          <el-menu-item :index="item.id + ''">
+          <el-menu-item
+            :index="item.id + ''"
+            @click="handleMenuItemClick(item)"
+          >
             <template #title>
               <el-icon v-if="item.icon">
                 <component :is="item.icon.slice(7)"></component>
