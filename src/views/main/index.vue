@@ -57,7 +57,7 @@ const handleCloseTag = (item: any, index: number) => {
   } else {
     store.commit('removeFromAliveMenus', index)
     router.push(store.state.aliveMenus[store.state.aliveMenus.length - 1].url)
-    currentIndex.value -= 1
+    currentIndex.value = store.state.aliveMenus.length - 1
   }
 }
 </script>
