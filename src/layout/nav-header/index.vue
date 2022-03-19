@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineEmits, computed } from 'vue'
+import { ref, computed } from 'vue'
 import localCache from '@/utils/cache'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
@@ -8,11 +8,12 @@ import { pathMapBreadCrumb } from '@/utils/map-bread-crumb'
 
 // 折叠/展开菜单
 const isFold = ref(false)
+// eslint-disable-next-line no-undef
+const emits = defineEmits(['foldChange'])
 const handleArrowChange = () => {
   isFold.value = !isFold.value
   emits('foldChange', isFold.value)
 }
-const emits = defineEmits(['foldChange'])
 
 // 退出登录
 const router = useRouter()

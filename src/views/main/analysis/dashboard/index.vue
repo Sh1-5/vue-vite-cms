@@ -1,22 +1,16 @@
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'dashboard',
   setup() {
-    const counter = ref(0)
-    return {
-      counter
-    }
+    return {}
   }
 })
 </script>
 
 <template>
-  <div class="dashboard">
-    <h1>{{ counter }}</h1>
-    <el-button @click="counter++">+</el-button>
-  </div>
+  <div class="dashboard"></div>
 </template>
 
 <style scoped lang="scss"></style>

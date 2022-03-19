@@ -7,9 +7,6 @@ declare module '*.vue' {
   export default component
 }
 
-// 在template中使用$store
-declare let $store: any
-
 interface ImportMetaEnv {
   readonly VITE_BASE_URL: string
   // 更多环境变量...
