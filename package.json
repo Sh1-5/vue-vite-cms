@@ -6,10 +6,20 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "prettier": "prettier --write .",
     "prepare": "husky install",
-    "commit": "cz",
-    "lint": "eslint ."
+    "lint": "lint-staged",
+    "commit": "cz"
+  },
+  "lint-staged": {
+    "src/*.{js,mjs,ts,tsx,vue}": [
+      "node_modules/.bin/prettier --write",
+      "node_modules/.bin/eslint --fix",
+      "git add"
+    ],
+    "src/*.{css,scss,less,json,html,md,markdown}": [
+      "node_modules/.bin/prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "axios": "^0.26.1",
@@ -32,6 +42,7 @@
     "eslint": "^8.11.0",
     "eslint-plugin-vue": "^8.5.0",
     "husky": "^7.0.0",
+    "lint-staged": "^12.3.7",
     "prettier": "^2.5.1",
     "sass": "^1.49.9",
     "typescript": "^4.5.4",
