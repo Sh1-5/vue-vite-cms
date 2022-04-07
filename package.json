@@ -1,7 +1,7 @@
 {
   "name": "vue-vite-cms",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -13,12 +13,10 @@
   "lint-staged": {
     "src/*.{js,mjs,ts,tsx,vue}": [
       "node_modules/.bin/prettier --write",
-      "node_modules/.bin/eslint --fix",
-      "git add"
+      "node_modules/.bin/eslint --fix"
     ],
     "src/*.{css,scss,less,json,html,md,markdown}": [
-      "node_modules/.bin/prettier --write",
-      "git add"
+      "node_modules/.bin/prettier --write"
     ]
   },
   "dependencies": {
